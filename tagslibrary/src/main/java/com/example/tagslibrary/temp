@@ -1,0 +1,9 @@
+There will be an xml layout
+All the attributes will be defined there
+The object will be used as a reference
+Observe the object
+Initialize an empty mutable list
+Initialize an empty rv, adapter
+Enable the check if the acv is not empty, else it is disabled
+When the check is pressed, add in the mutable list and update rv adapter
+
