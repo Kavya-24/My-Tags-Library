@@ -74,14 +74,14 @@ class TagsMainClass : LinearLayout {
 
 
         val featureACTV = RelativeLayout.LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
+            ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
         )
         featureACTV.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
         featureACTV.addRule(RelativeLayout.ALIGN_PARENT_START);
 
 
         val featureCheck = RelativeLayout.LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
+            ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT
         )
 
         featureCheck.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
