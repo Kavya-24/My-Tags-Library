@@ -4,9 +4,12 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
 import android.util.AttributeSet
+import android.util.Log
+import android.view.ViewGroup
 import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import androidx.annotation.Nullable
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
@@ -54,6 +57,7 @@ class TagsMainClass : LinearLayout {
         //Setup image attributes
 
 
+        //Init
         rv = RecyclerView(context)
         rv.id = R.id.rv_layout_tags
 
@@ -62,6 +66,37 @@ class TagsMainClass : LinearLayout {
 
         etTag = AutoCompleteTextView(context)
         etTag.id = R.id.acv_layout_tags
+
+        //There will be external parameters defined
+        val featureRV = LinearLayout.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+
+
+        val featureACTV = RelativeLayout.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+        featureACTV.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        featureACTV.addRule(RelativeLayout.ALIGN_PARENT_START);
+
+
+        val featureCheck = RelativeLayout.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+
+        featureCheck.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        featureCheck.addRule(RelativeLayout.ALIGN_PARENT_END);
+
+
+
+
+        print("In init of class")
+        Log.e("IN CLASS", featureRV.toString())
+
+        //Add view to parent
+        addView(rv, featureRV)
+        addView(etTag, featureACTV)
+        addView(btnCheck, featureCheck)
 
 
     }

@@ -46,7 +46,7 @@ class TagsFunction private constructor(builder: Builder) {
 
     private fun setInTagRv() {
 
-
+        print("In set in RV")
         adapterTagsAdded.tagAdded = mutableList
         val l1 = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         val l2 = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -69,7 +69,9 @@ class TagsFunction private constructor(builder: Builder) {
         val btnCheck: Button
 
         fun build(): TagsFunction {
+            print("In build")
             return TagsFunction(this)
+
         }
 
         //Add the builder methods
@@ -91,6 +93,7 @@ class TagsFunction private constructor(builder: Builder) {
 
 
         init {
+            print("In Builder Init")
             parentView = tagsMainClass
             rv = tagsMainClass.rv
             etTag = tagsMainClass.etTag
@@ -102,7 +105,7 @@ class TagsFunction private constructor(builder: Builder) {
 
     //Builder Init
     init {
-
+        print("In function init")
         //Main Init
         context = builder.context
         parentView = builder.parentView
