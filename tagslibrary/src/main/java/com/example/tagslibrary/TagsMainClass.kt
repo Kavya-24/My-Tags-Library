@@ -5,6 +5,7 @@ import android.content.Context
 import android.os.Build
 import android.util.AttributeSet
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.AutoCompleteTextView
 import android.widget.Button
@@ -23,7 +24,7 @@ class TagsMainClass : LinearLayout {
     lateinit var etTag: AutoCompleteTextView
     lateinit var btnCheck: Button
 
-    private lateinit var parentLinearLayout : LinearLayout
+    private lateinit var parentLinearLayout: LinearLayout
 
 
     private val TAG = TagsMainClass::class.java.simpleName
@@ -80,7 +81,6 @@ class TagsMainClass : LinearLayout {
             etTag.id = R.id.acv_layout_tags
             Log.e(TAG, "After _ids init")
 
-            //There will be external parameters defined
 
             val featureRV = LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
@@ -109,9 +109,9 @@ class TagsMainClass : LinearLayout {
             Log.e(TAG, "Before adding views")
 
             //Add view to parent
-            addView(rv, featureRV)
-            addView(etTag, featureACTV)
-            addView(btnCheck, featureCheck)
+            parentLinearLayout.addView(rv, featureRV)
+            parentLinearLayout.addView(etTag, featureACTV)
+            parentLinearLayout.addView(btnCheck, featureCheck)
 
             Log.e(TAG, "In ending of try")
 
