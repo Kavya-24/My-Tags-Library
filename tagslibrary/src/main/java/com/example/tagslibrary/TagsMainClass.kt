@@ -23,6 +23,9 @@ class TagsMainClass : LinearLayout {
     lateinit var etTag: AutoCompleteTextView
     lateinit var btnCheck: Button
 
+    private lateinit var parentLinearLayout : LinearLayout
+
+
     private val TAG = TagsMainClass::class.java.simpleName
 
     constructor(context: Context?) : super(context) {
@@ -64,6 +67,9 @@ class TagsMainClass : LinearLayout {
         try {
 
             Log.e(TAG, "In starting of try")
+            parentLinearLayout = LinearLayout(context)
+            parentLinearLayout.id = R.id.container_feature
+
             rv = RecyclerView(context)
             rv.id = R.id.rv_layout_tags
 
@@ -75,7 +81,8 @@ class TagsMainClass : LinearLayout {
             Log.e(TAG, "After _ids init")
 
             //There will be external parameters defined
-            val featureRV = RelativeLayout.LayoutParams(
+
+            val featureRV = LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
             )
 
