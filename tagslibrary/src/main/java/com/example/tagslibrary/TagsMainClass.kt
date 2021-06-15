@@ -23,6 +23,8 @@ class TagsMainClass : LinearLayout {
     lateinit var etTag: AutoCompleteTextView
     lateinit var btnCheck: Button
 
+    private val TAG = TagsMainClass::class.java.simpleName
+
     constructor(context: Context?) : super(context) {
         init(null)
     }
@@ -56,48 +58,60 @@ class TagsMainClass : LinearLayout {
     private fun init(@Nullable attrs: AttributeSet?) {
         //Setup image attributes
 
+        Log.e(TAG, "In init for TagsMain")
 
         //Init
-        rv = RecyclerView(context)
-        rv.id = R.id.rv_layout_tags
+        try {
 
-        btnCheck = Button(context)
-        btnCheck.id = R.id.iv_check
+            Log.e(TAG, "In starting of try")
+            rv = RecyclerView(context)
+            rv.id = R.id.rv_layout_tags
 
-        etTag = AutoCompleteTextView(context)
-        etTag.id = R.id.acv_layout_tags
+            btnCheck = Button(context)
+            btnCheck.id = R.id.btn_check
 
-        //There will be external parameters defined
-        val featureRV = LinearLayout.LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
-        )
+            etTag = AutoCompleteTextView(context)
+            etTag.id = R.id.acv_layout_tags
+            Log.e(TAG, "After _ids init")
 
+            //There will be external parameters defined
+            val featureRV = RelativeLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
+            )
 
-        val featureACTV = RelativeLayout.LayoutParams(
-            ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
-        )
-        featureACTV.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-        featureACTV.addRule(RelativeLayout.ALIGN_PARENT_START);
+            Log.e(TAG, "After Init RV")
 
-
-        val featureCheck = RelativeLayout.LayoutParams(
-            ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT
-        )
-
-        featureCheck.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-        featureCheck.addRule(RelativeLayout.ALIGN_PARENT_END);
+            val featureACTV = RelativeLayout.LayoutParams(
+                ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+            featureACTV.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+            featureACTV.addRule(RelativeLayout.ALIGN_PARENT_START);
 
 
+            Log.e(TAG, "After Init ACTV")
 
+            val featureCheck = RelativeLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT
+            )
 
-        print("In init of class")
-        Log.e("IN CLASS", featureRV.toString())
+            featureCheck.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+            featureCheck.addRule(RelativeLayout.ALIGN_PARENT_END);
 
-        //Add view to parent
-        addView(rv, featureRV)
-        addView(etTag, featureACTV)
-        addView(btnCheck, featureCheck)
+            Log.e(TAG, "After Init Check")
 
+            Log.e(TAG, "Before adding views")
+
+            //Add view to parent
+            addView(rv, featureRV)
+            addView(etTag, featureACTV)
+            addView(btnCheck, featureCheck)
+
+            Log.e(TAG, "In ending of try")
+
+        } catch (e: Exception) {
+            //Failed to inflate View
+            Log.e(TAG, "Failed to inflate view because of ${e.message} and ${e.cause}")
+        }
 
     }
 

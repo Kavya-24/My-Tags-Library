@@ -1,5 +1,6 @@
 package com.example.tagslibrary
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,14 +17,17 @@ class TagsAdapter :
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val TAG = itemView.findViewById<TextView>(R.id.getTagName)
+        private val TAG = MyViewHolder::class.simpleName
+        val tagValue = itemView.findViewById<TextView>(R.id.getTagName)
         val cross = itemView.findViewById<ImageView>(R.id.getTagCross)
         val card = itemView.findViewById<CardView>(R.id.container_card)
 
         fun bindPost(_tag: String) {
 
+
+            Log.e(TAG, "Adding tag $_tag")
             with(_tag) {
-                TAG.text = _tag
+                tagValue.text = _tag
                 //OnClickListener for the tag cross
 
             }
@@ -68,6 +72,10 @@ class TagsAdapter :
         holder.bindPost(tagAdded[position])
 
     }
+
+}
+
+interface OnClickingTagListener{
 
 }
 

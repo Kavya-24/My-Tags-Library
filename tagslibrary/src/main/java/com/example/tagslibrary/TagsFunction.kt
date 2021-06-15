@@ -1,6 +1,7 @@
 package com.example.tagslibrary
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.AutoCompleteTextView
 import android.widget.Button
@@ -26,6 +27,7 @@ class TagsFunction private constructor(builder: Builder) {
     private val etTag: AutoCompleteTextView
     private val btnCheck: Button
 
+    private val TAG = TagsFunction::class.java.simpleName
 
     fun onCheck() {
         //This is triggered when we check the tag
@@ -40,13 +42,14 @@ class TagsFunction private constructor(builder: Builder) {
 
 
     fun getTheList(): MutableList<String> {
+        Log.e(TAG, "In getting mutable list")
         return mutableList
     }
 
 
     private fun setInTagRv() {
 
-        print("In set in RV")
+        Log.e(TAG, "In setting recycler view")
         adapterTagsAdded.tagAdded = mutableList
         val l1 = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         val l2 = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -68,8 +71,10 @@ class TagsFunction private constructor(builder: Builder) {
         val etTag: AutoCompleteTextView
         val btnCheck: Button
 
+        private val TAG = "TagsBuilderClass"
+
         fun build(): TagsFunction {
-            print("In build")
+            Log.e(TAG, "in build() constructor")
             return TagsFunction(this)
 
         }
@@ -93,7 +98,7 @@ class TagsFunction private constructor(builder: Builder) {
 
 
         init {
-            print("In Builder Init")
+            Log.e(TAG, "In builder init()")
             parentView = tagsMainClass
             rv = tagsMainClass.rv
             etTag = tagsMainClass.etTag
@@ -105,7 +110,8 @@ class TagsFunction private constructor(builder: Builder) {
 
     //Builder Init
     init {
-        print("In function init")
+
+        Log.e(TAG, "In TagsFunction init()")
         //Main Init
         context = builder.context
         parentView = builder.parentView
