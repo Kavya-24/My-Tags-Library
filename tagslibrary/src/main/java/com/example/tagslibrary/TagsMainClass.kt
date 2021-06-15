@@ -5,12 +5,10 @@ import android.content.Context
 import android.os.Build
 import android.util.AttributeSet
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.LinearLayout
-import android.widget.RelativeLayout
 import androidx.annotation.Nullable
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
@@ -71,6 +69,7 @@ class TagsMainClass : LinearLayout {
             parentLinearLayout = LinearLayout(context)
             parentLinearLayout.id = R.id.container_feature
 
+
             rv = RecyclerView(context)
             rv.id = R.id.rv_layout_tags
 
@@ -81,38 +80,47 @@ class TagsMainClass : LinearLayout {
             etTag.id = R.id.acv_layout_tags
             Log.e(TAG, "After _ids init")
 
-
-            val featureRV = LinearLayout.LayoutParams(
+            val parentParam = LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
             )
 
-            Log.e(TAG, "After Init RV")
-
-            val featureACTV = RelativeLayout.LayoutParams(
-                ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
-            )
-            featureACTV.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-            featureACTV.addRule(RelativeLayout.ALIGN_PARENT_START);
 
 
-            Log.e(TAG, "After Init ACTV")
+            addView(parentLinearLayout, parentParam)
 
-            val featureCheck = RelativeLayout.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT
-            )
 
-            featureCheck.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-            featureCheck.addRule(RelativeLayout.ALIGN_PARENT_END);
-
-            Log.e(TAG, "After Init Check")
-
-            Log.e(TAG, "Before adding views")
-
-            //Add view to parent
-            parentLinearLayout.addView(rv, featureRV)
-            parentLinearLayout.addView(etTag, featureACTV)
-            parentLinearLayout.addView(btnCheck, featureCheck)
-
+//            val featureRV = LinearLayout.LayoutParams(
+//                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
+//            )
+//
+//            Log.e(TAG, "After Init RV")
+//
+//            val featureACTV = RelativeLayout.LayoutParams(
+//                ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
+//            )
+//
+//            //featureACTV.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+//            //featureACTV.addRule(RelativeLayout.ALIGN_PARENT_START);
+//
+//
+//            Log.e(TAG, "After Init ACTV")
+//
+//            val featureCheck = RelativeLayout.LayoutParams(
+//                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT
+//            )
+//
+//            //featureCheck.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+//            //featureCheck.addRule(RelativeLayout.ALIGN_PARENT_END);
+//
+//            Log.e(TAG, "After Init Check")
+//
+//            Log.e(TAG, "Before adding views")
+//
+//            //Add view to parent
+//            parentLinearLayout.addView(rv, featureRV)
+//            parentLinearLayout.addView(etTag, featureACTV)
+//            parentLinearLayout.addView(btnCheck, featureCheck)
+//
             Log.e(TAG, "In ending of try")
 
         } catch (e: Exception) {
